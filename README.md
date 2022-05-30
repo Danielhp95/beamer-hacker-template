@@ -2,23 +2,12 @@
 
 Beamer template derived from [DarkConsoleTheme](https://www.overleaf.com/latex/templates/darkconsole-beamer-theme/yrqyrpvxzjvj), but cooler, in my opinion.
 
-**NOTE:** `pdflatex` won't work with this template, I recommend using`lualatex`.
+**NOTE:** `pdflatex` won't work as a latex compiler for this  template, I recommend instead using`lualatex`.
 
 ## Template structure:
 + `kmbeamer_color.sty`: Defines colors used throughout template (i.e: `\definecolor{lightorange}{HTML}{FFAF24}`)
 + `beamerthemeDarkConsole.sty`: Defines template layout (i.e footnotes, title page)
 + `beamercolorthemeDarkConsole.sty`: Defines colours for certain latex elements.
-
-
-## Images
-
-#### Title
-
-![Title]{./sample_images/title.png)
-
-#### Random frame
-
-![random_frame]{./sample_images/math.png)
 
 ## Usage
 
@@ -40,3 +29,13 @@ Beamer template derived from [DarkConsoleTheme](https://www.overleaf.com/latex/t
 \end{document}
 ```
 3 - Compile using `lualatex presentation.tex`
+
+
+
+## Images
+
+### Title slide
+![Title](./sample_images/title.png)
+
+### Random slide
+![random_frame](./sample_images/math.png)
