@@ -1,0 +1,77 @@
+%% Copyright (c) 2013-2016 Kazuki Maeda <kmaeda@kmaeda.net>
+%%
+%% Distributable under the MIT License:
+%% http://www.opensource.org/licenses/mit-license.php
+%%
+\ProvidesPackage{beamerthemeDarkConsole}[2013/05/16 ]
+
+\mode<presentation>
+
+%\RequirePackage{kmbeamer_common}
+
+\newbox\kmbmr@tmpboxa
+\newbox\kmbmr@tmpboxb
+
+\usefonttheme{professionalfonts}
+
+\setbeamertemplate{sections/subsections in toc}[sections numbered]{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{qed symbol}{}
+
+\usecolortheme{DarkConsole}
+
+\def\familydefault{\ttdefault}
+
+\setbeamersize{text margin left=6mm,text margin right=6mm}
+
+\setbeamerfont{normal text}{size=\small, series=\mdseries}
+\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamerfont{structure}{series=\bfseries}
+\setbeamerfont{title}{size=\huge,series=\bfseries}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize,series=\bfseries}
+\setbeamerfont{footline}{size*={5}{\z@},series=\mdseries}
+
+\setbeamertemplate{itemize item}{*}
+\setbeamertemplate{itemize subitem}{*}
+\setbeamertemplate{itemize subsubitem}{*}
+\setbeamertemplate{frametitle}{\hspace{-1.2em}{\usebeamercolor[fg]{normal text}\texttt{\bfseries >\hbox{}>\hbox{}> }}\boldmath\textbf{\insertframetitle}}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{
+  \setbox\kmbmr@tmpboxa\hbox{[\ifnum\insertsectionnumber>0\boldmath\insertsectionnumber.~\insertsection\else\char"7E\fi]\$~\_}
+  \setbox\kmbmr@tmpboxb\hbox{[\insertframenumber]} % Removed /\inserttotalframenumber because it wasn't working
+  \ht\kmbmr@tmpboxa=1mm\dp\kmbmr@tmpboxa=0mm
+  \ht\kmbmr@tmpboxb=1mm\dp\kmbmr@tmpboxb=0mm
+  \vspace{5.2mm}
+  \hspace{2mm}\noindent\box\kmbmr@tmpboxa\hfill\box\kmbmr@tmpboxb\hspace{2mm}
+  \vspace{1.3mm}
+}
+
+% Simple commands to tie theme together
+\newcommand{\textbfo}[1]{\textbf{\textcolor{lightorange}{#1}}}
+\newcommand{\textbfg}[1]{\textbf{\textcolor{lightgreen}{#1}}}
+\renewcommand{\bullet}{\textcolor{lightgreen}{* }}
+
+
+% Title page layout. Change per presentation!
+\setbeamertemplate{title page}{
+  \renewcommand\thefootnote{\fnsymbol{footnote}}
+  \setcounter{footnote}{1} % \dagger
+  {\huge \noindent >\hbox{}>\hbox{}>} {\usebeamerfont{title}\usebeamercolor[fg]{title}\bfseries\boldmath\inserttitle}
+  \ifx\insertsubtitle\@empty\else\\>\hbox{}>\hbox{}> {\usebeamerfont{title}\usebeamercolor[fg]{title}\insertsubtitle}\fi~\\[1em]
+  {
+  \Large
+  \textbfg{Presentation Venue:} Wherever presentation is being given \\
+  \vspace{0.3em}
+  \textbfg{Presenter:} \insertauthor\ \ifx\insertinstitute\@empty\else(\insertinstitute)\fi\\
+  }
+  \vspace{2em}
+  \insertdate
+  \renewcommand\thefootnote{\arabic{footnote}}
+  \setcounter{footnote}{0}
+}
+
+\mode
+<all>
+
+\endinput
